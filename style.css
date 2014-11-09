@@ -26,7 +26,6 @@ body #mainHeader.stick {
     z-index: 10000;
     border-radius: 0 0 0.5em 0.5em;
     width: 94.5%;
-
   }
 }
 
@@ -51,11 +50,12 @@ div#mastHead {
   border-radius: 20px;
   margin: 1em 0;
   padding: 4em 0;
-  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.65),  rgba(0, 0, 0, 0.1)), url("TROY.jpg");
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.65),  rgba(0, 0, 0, 0.1)), url("https://maps.googleapis.com/maps/api/staticmap?center=42.729960299999995,-73.6767701&zoom=12&size=1920x900");
   background-size: cover;
+  background-position: center center;
 }
 div#mastHead h1 {
-  color: #FFF;
+  color: white;
   text-align: center;
 }
 
