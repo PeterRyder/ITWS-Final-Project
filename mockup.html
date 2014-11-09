@@ -80,9 +80,9 @@
 	    if (status == google.maps.GeocoderStatus.OK) {
 	      if (results[1]) {
 				$('#name').html(results[1].formatted_address);
-				var zipcode = findZip(results[0].address_components);
-				current_zip = zipcode;
-				getValue(current_zip);
+				var city = findCity(results[0].address_components);
+				var state = findState(results[0].address_components);
+				$("#citystate").html(city + ", " + state);
 	      } else {
 	        $('#msg').html('Google Maps: No results found for current location.');
 	      }
@@ -91,6 +91,27 @@
 	    }
 	  });
 	}
+	
+	function findCity(results) {
+		for (var i in results) {
+			if (results[i].types[0] == "locality") {
+				$("#city").html(results[i].long_name);
+				return results[i].long_name;
+			}
+		}
+		return 0;
+	}
+	
+	function findState(results) {
+		for (var i in results) {
+			if (results[i].types[0] == "administrative_area_level_1") {
+				$("#state").html(results[i].short_name);
+				return results[i].short_name;
+			}
+		}
+		return 0;
+	}
+	
 	</script>
 	
 	<style>
@@ -120,7 +141,7 @@
     
 	<div id="content" class="pure-u-1">
 		<div id="mastHead">
-			<h1>Troy, NY</h1>
+			<h1><span id="citystate"></span></h1>
 		</div>
 		
 		<div id="status" class="pure-g">
