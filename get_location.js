@@ -1,6 +1,7 @@
 $(document).ready(function () {
   initialize();
   getLocation();
+  getmap();
 });
 
 // HTML5 Geolocation : Find Current Location
@@ -52,11 +53,13 @@ function currentPosition(position) {
   if (!check_initial) {
     codeLatLng();
     check_initial = true;
+    getmap();
   }
   if (diff > update_delay) {
     codeLatLng();
     getValue(current_zip);
     check_time = now;
+    getmap();
   }
   amount_checks += 1;
   $('#checks').html('Checks: ' + amount_checks);
@@ -114,3 +117,9 @@ function findState(results) {
   }
   return 0;
 }
+
+function getmap() {
+  $("#mastHead").css('background-image', 'linear-gradient(to right, rgba(0, 0, 0, 0.65),  rgba(0, 0, 0, 0.1)), url("https://maps.googleapis.com/maps/api/staticmap?center=' + current_lat + ',' + current_long + '&zoom=12&size=1920x900")');
+}
+            
+            
