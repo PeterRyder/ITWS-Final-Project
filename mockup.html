@@ -18,9 +18,19 @@
 
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+<<<<<<< HEAD
   <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3&key{AIzaSyDx9JMWMisTiwURl7Jg_yNL-sYvtTbyXlc}"></script>  
   <script type="text/javascript" src="get_location.js"></script>
 
+=======
+  <script type="text/javascript" src="http://oauth.googlecode.com/svn/code/javascript/oauth.js"></script>
+  <script type="text/javascript" src="http://oauth.googlecode.com/svn/code/javascript/sha1.js"></script>
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3&key{AIzaSyDx9JMWMisTiwURl7Jg_yNL-sYvtTbyXlc}"></script>
+  <script type="text/javascript" src="get_location.js"></script>
+
+  <script type="text/javascript" src="yelp/get_data.js"></script>
+  
+>>>>>>> FETCH_HEAD
   <style>
     #status {
       background-color: #EEE;
@@ -69,7 +79,7 @@
           </div>
         </div>
       </div>
-      
+
       <div class="pure-u-1 pure-u-sm-1 pure-u-md-1-2 blockObject">
         <div class="blockWrap">
           <div class="block">
@@ -81,18 +91,20 @@
           </div>
         </div>
       </div>
-      
+
       <div class="pure-u-1 pure-u-sm-1 pure-u-md-1-2 blockObject">
         <div class="blockWrap">
           <div class="block" id="instagram">
             <h2>Instagram</h2>
             <ul class="pure-g">
-				<p class="pure-u-1">Loading Instagrams...</p>
+              <div class="pure-u-1 pure-u-sm-1 pure-u-md-1-2">
+                <p>Loading Instagram...</p>
+              </div>
             </ul>
           </div>
         </div>
       </div>
-      
+
       <div class="pure-u-1 pure-u-sm-1 pure-u-md-1-2 blockObject">
         <div class="blockWrap">
           <div class="block" id="flickr">
@@ -122,20 +134,15 @@
           </div>
         </div>
       </div>
-      
+
       <div class="pure-u-1 pure-u-sm-1 pure-u-md-1-2 blockObject">
         <div class="blockWrap">
           <div class="block" id="yelp">
             <h2>Yelp</h2>
             <h3>Best Restaurants</h3>
-            <ul>
-              <li>Nighthawk's Kitchen</li>
-              <li>Flying Chicken</li>
-              <li>The Ruck</li>
-              <li>Dinosaur's BBQ</li>
-              <li>Lucas Confectionary</li>
-              <li>Big Apple Pizza</li>
-            </ul>
+            <div id="restaurants">
+              <p></p>
+            </div>
           </div>
         </div>
       </div>

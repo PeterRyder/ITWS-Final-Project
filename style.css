@@ -46,6 +46,18 @@ div#mainHeader div#search  {
   font-size: 18px;
 }
 
+.text {
+  float: left;
+}
+
+.rating {
+  float: right;
+}
+
+.listings {
+  clear: both;
+}
+
 div#mastHead {
   border-radius: 20px;
   margin: 1em 0;
