@@ -1,7 +1,8 @@
 <?php
 
-$latitude = "42.728412";
-$longitude = "-73.691785";
+$latitude = $_POST['latitude'];
+$longitude = $_POST['longitude'];
+
 $access = "39008.a99ef26.36ce1a29b53c4676b595121e094584fe";
 
 $result = fetchData("https://api.instagram.com/v1/media/search?lat={$latitude}&lng={$longitude}&distance=3000&access_token={$access}");
