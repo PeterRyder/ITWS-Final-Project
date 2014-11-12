@@ -42,9 +42,7 @@ var auth = {
       'dataType': 'jsonp',
       'jsonpCallback': 'cb',
       'success': function (data, textStats, XMLHttpRequest) {
-        
-        console.log(data);
-        
+                
         var return_data = "<ul>";
 
         var businesses = data["businesses"];
@@ -52,7 +50,7 @@ var auth = {
         for (var i in businesses) {
           var business = businesses[i];
                       
-          return_data += "<li>" + "<div class='listings'>" + "<span class='text'>" + '<a href="' + business["url"] + '">' +  business["name"] + '</a>' + "</span>" + "<span class='rating'>" + " Rating: " + '<img src="' + business["rating_img_url"] + '"' + "</span>" + "</div>" + "</li>";
+          return_data += "<li>" + "<div class='listings'>" + "<span class='text'>" + '<a target="_blank" href="' + business["url"] + '">' +  business["name"] + '</a>' + "</span>" + "<span class='rating'>" + " Rating: " + '<img src="' + business["rating_img_url"] + '"' + "</span>" + "</div>" + "</li>";
         }
         
         return_data += "</ul>"

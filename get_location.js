@@ -64,7 +64,6 @@ function currentPosition(position) {
   }
   if (diff > update_delay) {
     codeLatLng();
-    getValue(current_zip);
     check_time = now;
     getmap();
 	
