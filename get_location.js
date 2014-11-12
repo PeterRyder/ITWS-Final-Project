@@ -42,9 +42,15 @@ function handleError(error) {
   }
 }
 
+function updateCoords(latitude, longitude) {
+	current_lat = latitude;
+	current_long = longitude; 
+}
+
 function currentPosition(position) {
   current_lat = position.coords.latitude;
   current_long = position.coords.longitude;
+  updateCoords(position.coords.latitude, position.coords.longitude);
   $('#lat').html('Latitude: ' + current_lat);
   $('#long').html('Longitude: ' + current_long);
   $('#msg').html(position.coords.accuracy + " meters of accuracy.");
@@ -54,12 +60,15 @@ function currentPosition(position) {
     codeLatLng();
     check_initial = true;
     getmap();
+	getInsta();
   }
   if (diff > update_delay) {
     codeLatLng();
     getValue(current_zip);
     check_time = now;
     getmap();
+	
+	getInsta();
   }
   amount_checks += 1;
   $('#checks').html('Checks: ' + amount_checks);
@@ -121,5 +130,17 @@ function findState(results) {
 function getmap() {
   $("#mastHead").css('background-image', 'linear-gradient(to right, rgba(0, 0, 0, 0.65),  rgba(0, 0, 0, 0.1)), url("https://maps.googleapis.com/maps/api/staticmap?center=' + current_lat + ',' + current_long + '&zoom=12&size=1500x300")');
 }
-            
+
+function getInsta() {
+	$.ajax({
+		url: 'get_IG.php',
+		type: 'POST',
+		data: {latitude: current_lat, longitude: current_long},
+		success: function(msg) {
+			$("#instagram ul").html(msg);
+		}
+	});
+}
+
+
             
