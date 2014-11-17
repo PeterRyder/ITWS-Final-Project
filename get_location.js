@@ -156,7 +156,7 @@ function getData() {
     success: function (msg) {
       var return_data = "<ul>";
 
-      var businesses = data["businesses"];
+      var businesses = msg["businesses"];
 
       for (var i in businesses) {
         var business = businesses[i];
