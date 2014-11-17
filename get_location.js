@@ -156,6 +156,7 @@ function getData() {
     success: function (msg) {
 
       console.log(msg);
+      console.log(msg['businesses']);
 
       var return_data = "<ul>";
 
