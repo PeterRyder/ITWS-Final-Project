@@ -154,13 +154,15 @@ function getData() {
       longitude: current_long
     },
     success: function (msg) {
+
+      console.log(msg);
+
       var return_data = "<ul>";
 
       var businesses = msg["businesses"];
 
       for (var i in businesses) {
         var business = businesses[i];
-
         return_data += "<li>" + "<div class='listings'>" + "<span class='text'>" + '<a target="_blank" href="' + business["url"] + '">' + business["name"] + '</a>' + "</span>" + "<span class='rating'>" + " Rating: " + '<img src="' + business["rating_img_url"] + '"' + "</span>" + "</div>" + "</li>";
       }
 

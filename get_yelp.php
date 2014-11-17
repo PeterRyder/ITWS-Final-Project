@@ -17,9 +17,6 @@ function fetchData($url){
      return $result;
 }
 
-$count = 0;
-$total = 0;
-
 echo $result;
 
 ?>
