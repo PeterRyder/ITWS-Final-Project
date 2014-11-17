@@ -109,6 +109,31 @@ function codeLatLng() {
   });
 }
 
+function getCityState(latitude, longitude) {
+	var lat = parseFloat(current_lat);
+	var lng = parseFloat(current_long);
+
+	var foundcity; var foundstate;
+	
+	latlng = new google.maps.LatLng(lat, lng);
+	geocoder.geocode({
+		'latLng': latlng
+	}, function (results, status) {
+		if (status == google.maps.GeocoderStatus.OK) {
+			if (results[1]) {
+				foundcity = findCity(results[0].address_components);
+				foundstate = findState(results[0].address_components);
+			} else {
+				$('#census').html('No data found for current location.');
+			}
+		} else {
+			$('#census').html('Google Maps Geocoder failed due to: ' + status);
+		}
+	});
+	
+	return foundcity;
+}
+
 function findCity(results) {
   for (var i in results) {
     if (results[i].types[0] == "locality") {
@@ -146,6 +171,22 @@ function getData() {
     }
   });
 
+	alert(getCityState(current_lat, current_long));
+
+  $.ajax({
+    url: 'get_census.php',
+    type: 'POST',
+    data: {
+      latitude: current_lat,
+      longitude: current_long,
+	  city: city,
+	  state: state
+    },
+    success: function (msg) {
+      $("#census").html(msg);
+    }
+  });
+
   $.ajax({
     url: 'get_yelp.php',
     type: 'POST',
@@ -156,6 +197,7 @@ function getData() {
     success: function (msg) {
 
       console.log(msg);
+  	  console.log(msg["businesses"]);
 
       var return_data = "<ul>";
 
