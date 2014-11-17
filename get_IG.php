@@ -21,8 +21,6 @@ $count = 0;
 $total = 0;
 $result = json_decode($result);
 
-// var_dump($result);
-
 foreach($result->data as $post) {
 	$image_url = $post->images->standard_resolution->url;
 	if ($count < 4) {
