@@ -154,7 +154,6 @@ function getData() {
       longitude: current_long
     },
     success: function (msg) {
-      $("#restaurants").html(msg);
       var return_data = "<ul>";
 
       var businesses = data["businesses"];

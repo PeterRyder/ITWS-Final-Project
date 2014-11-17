@@ -19,7 +19,6 @@ function fetchData($url){
 
 $count = 0;
 $total = 0;
-$result = json_decode($result);
 
 echo $result;
 
