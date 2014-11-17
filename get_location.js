@@ -155,12 +155,11 @@ function getData() {
     },
     success: function (msg) {
 
-      console.log(msg);
-      console.log(msg['businesses']);
+      data = JSON.parse(msg);
 
       var return_data = "<ul>";
 
-      var businesses = msg["businesses"];
+      var businesses = data["businesses"];
 
       for (var i in businesses) {
         var business = businesses[i];
