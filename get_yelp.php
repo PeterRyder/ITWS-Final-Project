@@ -17,7 +17,7 @@ function fetchData($url){
      return $result;
 }
 
-echo $result;
+var_dump($result->{results});
 
 ?>
 

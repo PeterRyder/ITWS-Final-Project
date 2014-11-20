@@ -19,7 +19,7 @@ var check_initial = false;
 var update_delay = 10000; // milliseconds
 
 var custom = false;
-var zipcode = "95131";
+var zipcode = "94110";
 var the_zipcoder;
 
 function getLocation() {
@@ -151,10 +151,10 @@ function getData() {
     },
     success: function (msg) {
       $("#instagram ul").html(msg);
-	  NProgress.inc(0.3);
+  	  NProgress.inc(0.3);
     }
   });
-
+  
   $.ajax({
     url: 'get_yelp.php',
     type: 'POST',
@@ -172,21 +172,21 @@ function getData() {
       }
       return_data += "</ul>"
       $("#restaurants").html(return_data);
-	  NProgress.inc(0.3);
-	  NProgress.done();
+  	  NProgress.inc(0.3);
+  	  NProgress.done();
     }
   });
 
-  $.ajax({
-	url: 'update_cache.php',
-	type: 'POST',
-	data: {
-		latitude: current_lat,
-		longitude: current_long,
-		custom: custom
-	},
-	success: function(msg) {}
-  });
+	//   $.ajax({
+	// url: 'update_cache.php',
+	// type: 'POST',
+	// data: {
+	// 	latitude: current_lat,
+	// 	longitude: current_long,
+	// 	custom: custom
+	// },
+	// success: function(msg) {}
+	//   });
 }
 
 function getZipCode() {
@@ -230,8 +230,13 @@ function enableCustomLocation(input_zipcode) {
 	data: {
 		zipcode: zipcode
 	},
+	dataType: "JSON",
 	success: function(msg) {
-		console.log(msg);
+		current_lat = msg.latitude;
+		current_long = msg.longitude;
+		codeLatLng();
+		getmap();
+		getData();
 	}
   });
 	
@@ -241,4 +246,10 @@ function disableCustomLocation() {
 	if (custom == true) {
 		custom = false;
 	}
+	// Reload everything
+	initialize();
+    getLocation();
+	codeLatLng();
+	getmap();
+	getData();
 }

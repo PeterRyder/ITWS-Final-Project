@@ -1,7 +1,6 @@
 <?php
 
-// $zipcode = $_POST['zipcode'];
-$zipcode = "95131";
+$zipcode = $_POST['zipcode'];
 
 $result = fetchData("http://maps.googleapis.com/maps/api/geocode/json?address={$zipcode}");
 
@@ -16,7 +15,16 @@ function fetchData($url){
 }
 
 $result = json_decode($result);
+$status = $result->status;
 
-echo $result->{'results'};
+if ($status == "OK") {
+	// We found a lat/long pair for the zipcode.
+	$converted_lat = $result->results[0]->geometry->location->lat;
+	$converted_lng = $result->results[0]->geometry->location->lng;
+	$location = array("latitude" => $converted_lat, "longitude" => $converted_lng);
+	$location = json_encode($location);
+	echo $location;
+}
+
 
 ?>
