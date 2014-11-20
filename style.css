@@ -65,9 +65,18 @@ a#customlocation i {
 	color: #000;
 	text-align: center;
 	display: block;
+  -webkit-animation-name: bluePulse;
+  -webkit-animation-duration: 2s;
+  -webkit-animation-iteration-count: infinite;
 }
 a#customlocation:hover i {
 	color: #00B4FF;
+}
+
+@-webkit-keyframes bluePulse {
+  from { color: #007d9a; -webkit-box-shadow: 0 0 9px #333; }
+  50% { color: #2daebf; -webkit-box-shadow: 0 0 18px #2daebf; }
+  to { color: #007d9a; -webkit-box-shadow: 0 0 9px #333; }
 }
 
 div#mastHead {
