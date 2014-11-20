@@ -76,6 +76,9 @@ div#content div.block#instagram ul li {
 div#content div#yelp .text {
   float: left;
 }
+div#content div#yelp .text a {
+	
+}
 div#content div#yelp .rating {
   float: right;
 }
