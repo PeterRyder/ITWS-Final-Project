@@ -37,14 +37,70 @@ $json = json_encode($xml);
 $array = json_decode($json,TRUE);
 // var_dump($array);
 // 
-// var_dump($array["response"]["TruliaStats"]["listingStats"]);
-$listOfAverages = array();
+//var_dump($array["response"]["TruliaStats"]["listingStats"]);
+
+$oneBedroom = array();
+$twoBedroom = array();
+$threeBedroom = array();
+$fourBedroom = array();
+
+
+
 foreach ($array["response"]["TruliaStats"]["listingStats"] as $week) {
 	foreach ($week as $listing) {
-		if ($listing["listingPrice"]["subcategory"][0]["type"] == "All Properties") {
-			array_push($listOfAverages, $listing["listingPrice"]["subcategory"][0]["averageListingPrice"]);
+		//var_dump($listing);
+
+		foreach ($listing["listingPrice"]["subcategory"] as $house) {
+
+			//var_dump($house);
+
+			if ($house["type"] == "1 Bedroom Properties") {
+				array_push($oneBedroom, $house["averageListingPrice"]);
+			}
+			elseif ($house["type"] == "2 Bedroom Properties") {
+				array_push($twoBedroom, $house["averageListingPrice"]);
+			}
+			elseif ($house["type"] == "3 Bedroom Properties") {
+				array_push($threeBedroom, $house["averageListingPrice"]);
+			}
+			elseif ($house["type"] == "4 Bedroom Properties") {
+				array_push($fourBedroom, $house["averageListingPrice"]);
+			}
+
 		}
 	}
 }
-$totalAvg = round(array_sum($listOfAverages)/count($listOfAverages));
-echo $totalAvg;
+
+$avgOneBedroom = -1;
+$avgTwoBedroom = -1;
+$avgThreeBedroom = -1;
+$avgFourBedroom = -1;
+
+if (count($oneBedroom) != 0) {
+	$avgOneBedroom = round(array_sum($oneBedroom)/count($oneBedroom));	
+}
+
+if (count($twoBedroom) != 0) {
+	$avgTwoBedroom = round(array_sum($twoBedroom)/count($twoBedroom));
+}
+
+if (count($threeBedroom) != 0) {
+	$avgThreeBedroom = round(array_sum($threeBedroom)/count($threeBedroom));
+}
+
+if (count($fourBedroom) != 0) {
+	$avgFourBedroom = round(array_sum($fourBedroom)/count($fourBedroom));
+}
+
+$result = array();
+
+array_push($result, $avgOneBedroom);
+array_push($result, $avgTwoBedroom);
+array_push($result, $avgThreeBedroom);
+array_push($result, $avgFourBedroom);
+
+//var_dump($result);
+
+$final_result = json_encode($result);
+
+echo $final_result;
