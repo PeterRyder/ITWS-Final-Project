@@ -23,11 +23,12 @@ $result = json_decode($result);
 
 foreach($result->data as $post) {
 	$image_url = $post->images->standard_resolution->url;
+	$instaurl = $post->link;
 	if ($count < 4) {
 ?>
 <div class="pure-u-1 pure-u-sm-1 pure-u-md-1-2">
     <li>
-		<img src="<?php echo $image_url ?>" class="pure-u-1">
+		<a href="<?php echo $instaurl ?>" target="_blank"><img src="<?php echo $image_url ?>" class="pure-u-1"></a>
     </li>
 </div>
 <?php
