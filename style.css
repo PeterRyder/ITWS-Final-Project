@@ -2,7 +2,7 @@
 body {
   margin: 0 auto;
   padding: 1em;
-  background: #FFF;
+  background: #f5f7f7;
 }
 
 #mainHeaderWrap.stick {
@@ -19,7 +19,8 @@ body {
 }
 
 #mainHeaderWrap {
-	background-color: #444;
+	background-color: #343838;
+	color: #FFFEDF;
 }
 #mainHeader {
 	padding: 0 2em;
@@ -61,17 +62,20 @@ div#mastHead h1 {
   text-align: center;
 }
 
+div#content h2 {
+	color: #00B4FF;
+}
 div#content ul {
   padding: 0;
 }
-
 div#content ul li {
   list-style-type: none;
 }
 
 div#content div.blockWrap {
-  background-color: #EEE;
+  background-color: #FFF;
   margin: 0.25em;
+  border-radius: 5px;
 }
 
 div#content div.block {
