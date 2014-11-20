@@ -170,23 +170,57 @@ function getData() {
         var business = businesses[i];
         return_data += "<li class='cf'>" + "<div class='listings'>" + "<span class='text'>" + '<a target="_blank" href="' + business["url"] + '">' + business["name"] + '</a>' + "</span>" + "<span class='rating'>" + '<img src="' + business["rating_img_url"] + '"' + "/></span>" + "</div>" + "</li>";
       }
-      return_data += "</ul>"
+      return_data += "</ul>";
       $("#restaurants").html(return_data);
   	  NProgress.inc(0.3);
   	  NProgress.done();
     }
   });
 
-	//   $.ajax({
-	// url: 'update_cache.php',
-	// type: 'POST',
-	// data: {
-	// 	latitude: current_lat,
-	// 	longitude: current_long,
-	// 	custom: custom
-	// },
-	// success: function(msg) {}
-	//   });
+  $.ajax ({
+    url: 'get_trulia.php',
+    type: 'POST',
+    data: {zipcode : current_zip},
+    success: function(msg) {
+      result = JSON.parse(msg);
+
+      console.log(result);
+      
+      var return_data = "<ul>";
+      var j = 1;
+      for (var i in result) {
+        var avg_input = result[i].toString();
+        console.log(avg_input);
+        var avg = avg_input.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+
+        if (j == 1) {
+          return_data += "<li class='cf'>" + "<div class='listings'> Avg Listing Price " + j + " bedroom: $" + avg + "</div>" + "</li>";
+        }
+        else {
+          return_data += "<li class='cf'>" + "<div class='listings'> Avg Listing Price " + j + " bedrooms: $" + avg + "</div>" + "</li>";
+        }
+        j += 1;
+      }
+
+      return_data += "</ul>";
+      
+      $('#truliaData').html(return_data);
+    },
+    beforeSend: function(){}
+  });
+  
+
+  $.ajax({
+	url: 'update_cache.php',
+	type: 'POST',
+	data: {
+		latitude: current_lat,
+		longitude: current_long,
+		custom: custom
+	},
+	success: function(msg) {}
+  });
+>>>>>>> FETCH_HEAD
 }
 
 function getZipCode() {
