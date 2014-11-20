@@ -79,7 +79,7 @@ div#content div#restaurants ul li {
 	padding: 0.15em 0;
 }
 div#content div#yelp .text {
-	width: 65%;
+	width: 50%;
   float: left;
 }
 div#content div#yelp .text a {
@@ -101,7 +101,7 @@ div#content div#yelp .text a:hover {
 }
 div#content div#yelp .rating {
   float: right;
-  width: 35%;
+  width: 50%;
  text-align: right;
 }
 div#content div#yelp .listings {
@@ -133,12 +133,30 @@ footer {
 	padding: 0 1em;
 }
 
+@media screen and (max-width: 48em) {
+	#mainHeaderBar h1 {
+		text-align: center;
+		margin: 0.25em 0;
+	}
+	#mainHeader div#searchWrap {
+		display: block;
+		margin: 0.25em 0;
+	}
+	#mainHeader div#search {
+		float: none;
+		display: table;
+		margin: 0.5em auto;
+	}
+	#mainHeader div#search input {
+		margin: 0 0.25em;
+	}
+}
+
 .cf:before,
 .cf:after {
     content: " "; /* 1 */
     display: table; /* 2 */
 }
-
 .cf:after {
     clear: both;
 }
