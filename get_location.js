@@ -292,12 +292,21 @@ function disableCustomLocation() {
 		custom = false;
 	}
 	// Turn glowing back on 
-	$("#customlocationform a i ").removeClass("noglow");
+	$("#customlocationform a i").removeClass("noglow");
 	
 	// Reload everything
 	NProgress.start();
-    getLocation();
+	
+	if (navigator.geolocation) {
+	    navigator.geolocation.watchPosition(currentPosition, handleError, {
+	      'enableHighAccuracy': true,
+	      'maximumAge': 30000
+	    });
+	}
 	codeLatLng();
+	
+	console.log(current_lat);
+	console.log(current_long);
 	getZipCode();
 	getmap();
 	getData();
