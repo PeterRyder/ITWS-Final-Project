@@ -1,47 +1,41 @@
 /*Final Project CSS*/
-
-#mainHeader {
-  background: black;
-}
-
 body {
   margin: 0 auto;
   padding: 1em;
-  background: #999999;
+  background: #FFF;
 }
 
-body #mainHeader {
-  padding: 10px; 
-}
-
-body #mainHeader.stick {
+#mainHeaderWrap.stick {
   position: normal;
 }
 
 @media (min-width: 800px) {
-  body #mainHeader.stick {
-    position: fixed;
-    top: 0;
-    z-index: 10000;
-    width: 94.5%;
+  #mainHeaderWrap.stick {
+	position: fixed;
+	top: 0;
+	right: 0;
+	width: 100%;
   }
 }
 
-div#mainHeader h1 {
-  float: left;
-  padding: 0;
-  margin: 0;
-  color: #FFF;
+#mainHeaderWrap {
+	background-color: #444;
+}
+#mainHeader {
+	padding: 0 2em;
+}
+#mainHeader h1 {
+	color: #FFF;
+}
+#mainHeader div#search {
+	margin: 1.5em 0 0;
+	float: right;
+	font-size: 18px;
+}
+#mainHeader div#search input {
+	outline: 0;
 }
 
-div#search input  {
-  outline: 0;
-}
-
-div#mainHeader div#search  {
-  float: right;
-  font-size: 18px;
-}
 
 .text {
   float: left;
@@ -62,7 +56,7 @@ div#mastHead {
   background-position: center center;
 }
 div#mastHead h1 {
-  color: white;
+  color: #FFF;
   text-align: center;
 }
 

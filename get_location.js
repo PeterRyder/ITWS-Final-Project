@@ -130,7 +130,7 @@ function findState(results) {
 }
 
 function getmap() {
-  $("#mastHead").css('background-image', 'linear-gradient(to right, rgba(0, 0, 0, 0.65),  rgba(0, 0, 0, 0.1)), url("https://maps.googleapis.com/maps/api/staticmap?center=' + current_lat + ',' + current_long + '&zoom=12&size=640x450&scale=2")');
+  $("#mastHead").css('background-image', 'linear-gradient(to right, rgba(0, 0, 0, 0.65),  rgba(0, 0, 0, 0.1)), url("https://maps.googleapis.com/maps/api/staticmap?center=' + current_lat + ',' + current_long + '&zoom=12&size=640x320&scale=2")');
 }
 
 function getData() {
