@@ -21,6 +21,7 @@ body {
 #mainHeaderWrap {
 	background-color: #343838;
 	color: #FFFEDF;
+	z-index: 1000;
 }
 #mainHeader {
 	padding: 0 2em;
@@ -42,6 +43,22 @@ body {
 	color: #FFF;
 	border: 0;
 	padding: 0.4em;
+}
+a#customlocation {
+	text-decoration: none;
+}
+a#customlocation i {
+	padding: 0.5em;
+	border-radius: 50%;
+	height: 1em;
+	width: 1em;
+	background-color: #FFF;
+	color: #000;
+	text-align: center;
+	display: block;
+}
+a#customlocation:hover i {
+	color: #00B4FF;
 }
 
 div#mastHead {
@@ -114,6 +131,7 @@ div#content div#yelp .rating {
 div#content div#yelp .listings {
 }
 div#content div#yelp .listings img {
+	z-index: 0 !important;
 	filter: saturate(0%);
 	-webkit-filter: saturate(0%);
 	-moz-filter: saturate(0%);

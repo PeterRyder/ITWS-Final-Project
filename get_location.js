@@ -19,6 +19,8 @@ var check_initial = false;
 var update_delay = 10000; // milliseconds
 
 var custom = false;
+var zipcode = "95131";
+var the_zipcoder;
 
 function getLocation() {
   if (navigator.geolocation) {
@@ -66,13 +68,15 @@ function currentPosition(position) {
     codeLatLng();
     check_initial = true;
     getmap();
+	getZipCode();
     getData();
     NProgress.start();
   }
-  if (diff > update_delay) {
+  if ((diff > update_delay) && (custom == false)) {
     codeLatLng();
     check_time = now;
     getmap();
+	getZipCode();
     getData();
   }
   amount_checks += 1;
@@ -87,6 +91,7 @@ var current_zip;
 function initialize() {
   geocoder = new google.maps.Geocoder();
   latlng = new google.maps.LatLng(40.75, -74);
+  zipcoder = new google.maps.LatLng(40.75, -74); 
 }
 
 function codeLatLng() {
@@ -184,10 +189,56 @@ function getData() {
   });
 }
 
-function enableCustomLocation() {
+function getZipCode() {
+	var lat = parseFloat(current_lat);
+	var lng = parseFloat(current_long);
+
+	  zipcoder = new google.maps.LatLng(lat, lng);
+	  geocoder.geocode({
+	    'latLng': zipcoder
+	  }, function (results, status) {
+	    if (status == google.maps.GeocoderStatus.OK) {
+	      if (results[1]) {
+			zipcode = findZip(results[0].address_components);
+	      } else {
+	        $('#msg').html('Google Maps: No results found for current location.');
+	      }
+	    } else {
+	      $('#msg').html('Google Maps Geocoder failed due to: ' + status);
+	    }
+	  });
+}
+
+function findZip(results) {
+	for (var i in results) {
+		if (results[i].types[0] == "postal_code") {
+			return results[i].long_name;
+		}
+	}
+	return 0;
+}
+
+function enableCustomLocation(input_zipcode) {
+	if (custom != true) {
+		custom = true;
+	}
+	zipcode = input_zipcode;
+	
+  $.ajax({
+	url: 'latlongfromzip.php',
+	type: 'POST',
+	data: {
+		zipcode: zipcode
+	},
+	success: function(msg) {
+		console.log(msg);
+	}
+  });
 	
 }
 
 function disableCustomLocation() {
-	
+	if (custom == true) {
+		custom = false;
+	}
 }
