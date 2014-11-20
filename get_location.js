@@ -3,9 +3,7 @@ $(document).ready(function () {
   getLocation();
   getmap();
   NProgress.configure({ showSpinner: false });
-  NProgress.start();
 });
-
 // HTML5 Geolocation : Find Current Location
 var current_lat;
 var current_long;
@@ -18,7 +16,9 @@ var latlng;
 var geocoder;
 var check_time = new Date();
 var check_initial = false;
-var update_delay = 5000; // milliseconds
+var update_delay = 10000; // milliseconds
+
+var custom = false;
 
 function getLocation() {
   if (navigator.geolocation) {
@@ -67,6 +67,7 @@ function currentPosition(position) {
     check_initial = true;
     getmap();
     getData();
+    NProgress.start();
   }
   if (diff > update_delay) {
     codeLatLng();
@@ -176,10 +177,17 @@ function getData() {
 	type: 'POST',
 	data: {
 		latitude: current_lat,
-		longitude: current_long
+		longitude: current_long,
+		custom: custom
 	},
 	success: function(msg) {}
   });
+}
 
+function enableCustomLocation() {
+	
+}
 
+function disableCustomLocation() {
+	
 }

@@ -26,12 +26,28 @@
 	<link rel="stylesheet" href="nprogress/nprogress.css" type="text/css" charset="utf-8">
 	<script src="nprogress/nprogress.js" type="text/javascript" charset="utf-8"></script>
 	
+	<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css" type="text/css" charset="utf-8">
 
   <style>
     #status {
       background-color: #EEE;
       padding: 0.5em 1em;
     }
+
+	a#customlocation i {
+		padding: 0.5em;
+		margin: 0 0.25em 0 0;
+		border-radius: 50%;
+		height: 1em;
+		width: 1em;
+		background-color: #FFF;
+		color: #000;
+		text-align: center;
+	}
+	a#customlocation:hover i {
+		color: #00B4FF;
+	}
+	
   </style>
   <script src="fancy.js"></script>
 </head>
@@ -41,12 +57,13 @@
   <div id="sticky-anchor"></div>
   <div id="mainHeaderWrap">
   	<div id="mainHeader" class="pure-g">
-	    <div id="mainHeaderBar" class="pure-u-1 pure-u-md-1-2">
+	    <div id="mainHeaderBar" class="pure-u-1 pure-u-md-1-3">
 	      <h1>SpaceFinder</h1>
 	    </div>
 
-	    <div class="pure-u-1 pure-u-md-1-2" id="searchWrap">
+	    <div class="pure-u-1 pure-u-md-2-3" id="searchWrap">
 	      <div id="search">
+			<a href="#" id="customlocation"><i class="fa fa-location-arrow"></i></a>
 	        <input type="text" placeholder="New Destination" />
 	        <input type="submit">
 	      </div>
