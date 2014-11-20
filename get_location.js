@@ -184,13 +184,13 @@ function getData() {
     success: function(msg) {
       result = JSON.parse(msg);
 
-      console.log(result);
+      //console.log(result);
       
       var return_data = "<ul>";
       var j = 1;
       for (var i in result) {
         var avg_input = result[i].toString();
-        console.log(avg_input);
+        //console.log(avg_input);
         var avg = avg_input.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
 
         if (j == 1) {
