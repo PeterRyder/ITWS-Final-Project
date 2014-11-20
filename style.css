@@ -12,7 +12,6 @@ body {
 
 body #mainHeader {
   padding: 10px; 
-  border-radius: 10px;
 }
 
 body #mainHeader.stick {
@@ -24,7 +23,6 @@ body #mainHeader.stick {
     position: fixed;
     top: 0;
     z-index: 10000;
-    border-radius: 0 0 0.5em 0.5em;
     width: 94.5%;
   }
 }
@@ -33,11 +31,10 @@ div#mainHeader h1 {
   float: left;
   padding: 0;
   margin: 0;
-  color: White;
+  color: #FFF;
 }
 
 div#search input  {
-  border-radius: 10px;
   outline: 0;
 }
 
@@ -59,7 +56,6 @@ div#mainHeader div#search  {
 }
 
 div#mastHead {
-  border-radius: 20px;
   margin: 1em 0;
   padding: 4em 0;
   background-size: cover;
@@ -81,7 +77,6 @@ div#content ul li {
 div#content div.blockWrap {
   background-color: #EEE;
   margin: 0.25em;
-  border-radius: 20px;
 }
 
 div#content div.block {
