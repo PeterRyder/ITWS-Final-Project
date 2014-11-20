@@ -28,12 +28,13 @@ body {
 	color: #FFF;
 }
 #mainHeader div#search {
-	margin: 1.5em 0 0;
+	margin: 1.25em 0 0;
 	float: right;
 	font-size: 18px;
 }
 #mainHeader div#search input {
 	outline: 0;
+	padding: 0.25em;
 }
 
 
@@ -82,5 +83,5 @@ div#content div.block#instagram ul li, div#content div.block#flickr ul li {
 }
 
 footer {
-  text-align: center
+	padding: 0 1em;
 }
