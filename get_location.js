@@ -171,5 +171,15 @@ function getData() {
     }
   });
 
+  $.ajax({
+	url: 'update_cache.php',
+	type: 'POST',
+	data: {
+		latitude: current_lat,
+		longitude: current_long
+	},
+	success: function(msg) {}
+  });
+
 
 }
