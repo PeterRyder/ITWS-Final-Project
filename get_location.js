@@ -177,6 +177,19 @@ function getData() {
     }
   });
 
+  $.ajax ({
+    url: 'get_trulia.php',
+    type: 'POST',
+    data: {zipcode : current_zip},
+    success: function(msg) {
+      var average = msg.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+      alert(average);
+      $('#truliaData').html("$" + average);
+    },
+    beforeSend: function(){}
+  });
+  
+
   $.ajax({
 	url: 'update_cache.php',
 	type: 'POST',

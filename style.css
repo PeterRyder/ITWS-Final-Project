@@ -5,6 +5,15 @@ body {
   background: #F5F7F7;
 }
 
+h1, h2, h3 {
+  font-family: 'Montserrat', sans-serif !important;
+}
+
+li, p {
+	font-family: 'Muli', sans-serif !important;
+}
+
+
 #mainHeaderWrap.stick {
   position: normal;
 }
