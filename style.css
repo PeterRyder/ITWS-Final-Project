@@ -37,6 +37,12 @@ body {
 	outline: 0;
 	padding: 0.25em;
 }
+#mainHeader div#search input[type="submit"] {
+	background-color: #00B4FF;
+	color: #FFF;
+	border: 0;
+	padding: 0.4em;
+}
 
 div#mastHead {
   margin: 1em 0;
