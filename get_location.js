@@ -40,10 +40,11 @@ var update_delay = 10000; // milliseconds
 var custom = false;
 var zipcode = "12180";
 var the_zipcoder;
+var watchID;
 
 function getLocation() {
   if (navigator.geolocation) {
-    navigator.geolocation.watchPosition(currentPosition, handleError, {
+    watchID = navigator.geolocation.watchPosition(currentPosition, handleError, {
       'enableHighAccuracy': true,
       'maximumAge': 30000
     });
@@ -248,6 +249,29 @@ function getZipCode() {
 	  });
 }
 
+function getNewZipCode(latitude, longitude) {
+	var lat = parseFloat(latitude);
+	var lng = parseFloat(longitude);
+	var newzipcode;
+  	  newgeocoder = new google.maps.Geocoder();
+	  newzipcoder = new google.maps.LatLng(lat, lng);
+	  newgeocoder.geocode({
+	    'latLng': newzipcoder
+	  }, function (results, status) {
+	    if (status == google.maps.GeocoderStatus.OK) {
+	      if (results[1]) {
+			newzipcode = findZip(results[0].address_components);
+	      } else {
+	        $('#msg').html('Google Maps: No results found for current location.');
+	      }
+	    } else {
+	      $('#msg').html('Google Maps Geocoder failed due to: ' + status);
+	    }
+	  });
+
+	return newzipcode;
+}
+
 function findZip(results) {
 	for (var i in results) {
 		if (results[i].types[0] == "postal_code") {
@@ -263,6 +287,9 @@ function enableCustomLocation() {
 	}
 	// Turn off glowing
 	$("#customlocationform a i ").addClass("noglow");
+	
+	// Turn off HTML5 geolocation
+	navigator.geolocation.clearWatch(watchID);
 	
 	input_zipcode = $("#customval").val();
 	zipcode = input_zipcode;
@@ -296,21 +323,14 @@ function disableCustomLocation() {
 	
 	// Reload everything
 	NProgress.start();
-	
-	if (navigator.geolocation) {
-	    navigator.geolocation.watchPosition(currentPosition, handleError, {
-	      'enableHighAccuracy': true,
-	      'maximumAge': 30000
-	    });
-	}
-	codeLatLng();
-	
-	console.log(current_lat);
-	console.log(current_long);
+	initialize();
+	getLocation();
+	zipcode = getNewZipCode(current_lat, current_long);
 	getZipCode();
+	codeLatLng();
 	getmap();
 	getData();
-	NProgress.done();
+	console.log(zipcode);
 }
 
 
