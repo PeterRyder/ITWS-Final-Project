@@ -145,7 +145,7 @@ function getData() {
     },
     success: function (msg) {
       $("#instagram ul").html(msg);
-	  NProgress.set(0.4);
+	  NProgress.inc(0.3);
     }
   });
 
@@ -162,12 +162,14 @@ function getData() {
       var businesses = data["businesses"];
       for (var i in businesses) {
         var business = businesses[i];
-        return_data += "<li>" + "<div class='listings'>" + "<span class='text'>" + '<a target="_blank" href="' + business["url"] + '">' + business["name"] + '</a>' + "</span>" + "<span class='rating'>" + " Rating: " + '<img src="' + business["rating_img_url"] + '"' + "/></span>" + "</div>" + "</li>";
+        return_data += "<li class='cf'>" + "<div class='listings'>" + "<span class='text'>" + '<a target="_blank" href="' + business["url"] + '">' + business["name"] + '</a>' + "</span>" + "<span class='rating'>" + " Rating: " + '<img src="' + business["rating_img_url"] + '"' + "/></span>" + "</div>" + "</li>";
       }
       return_data += "</ul>"
       $("#restaurants").html(return_data);
+	  NProgress.inc(0.3);
 	  NProgress.done();
     }
   });
+
 
 }

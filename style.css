@@ -2,7 +2,7 @@
 body {
   margin: 0 auto;
   padding: 1em;
-  background: #f5f7f7;
+  background: #F5F7F7;
 }
 
 #mainHeaderWrap.stick {
@@ -73,21 +73,72 @@ div#content div.block#instagram ul li {
   display: inline;
 }
 
+div#content div#restaurants ul li {
+	display: block;
+	clear: both;
+	padding: 0.15em 0;
+}
 div#content div#yelp .text {
+	width: 65%;
   float: left;
 }
 div#content div#yelp .text a {
-	
+	color: #343838;
+	text-decoration: underline;
+	display: block;
+	-webkit-transition: all .1s ease-in-out;
+	-moz-transition: all .1s ease-in-out;
+	-o-transition: all .1s ease-in-out;
+	transition: all .1s ease-in-out;
+}
+div#content div#yelp .text a:hover {
+	color: #00B4FF;
+	text-decoration: none;
+	-webkit-transition: all .1s ease-in-out;
+	-moz-transition: all .1s ease-in-out;
+	-o-transition: all .1s ease-in-out;
+	transition: all .1s ease-in-out;
 }
 div#content div#yelp .rating {
   float: right;
+  width: 35%;
+ text-align: right;
 }
 div#content div#yelp .listings {
-  clear: both;
 }
-
-
+div#content div#yelp .listings img {
+	filter: saturate(0%);
+	-webkit-filter: saturate(0%);
+	-moz-filter: saturate(0%);
+	-o-filter: saturate(0%);
+	-ms-filter: saturate(0%);
+	-webkit-transition: all .1s ease-in-out;
+	-moz-transition: all .1s ease-in-out;
+	-o-transition: all .1s ease-in-out;
+	transition: all .1s ease-in-out;
+}
+div#content div#yelp .listings:hover img {
+	filter: saturate(100%);
+	-webkit-filter: saturate(100%);
+	-moz-filter: saturate(100%);
+	-o-filter: saturate(100%);
+	-ms-filter: saturate(100%);
+	-webkit-transition: all .1s ease-in-out;
+	-moz-transition: all .1s ease-in-out;
+	-o-transition: all .1s ease-in-out;
+	transition: all .1s ease-in-out;
+}
 
 footer {
 	padding: 0 1em;
+}
+
+.cf:before,
+.cf:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.cf:after {
+    clear: both;
 }
