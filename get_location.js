@@ -2,6 +2,8 @@ $(document).ready(function () {
   initialize();
   getLocation();
   getmap();
+  NProgress.configure({ showSpinner: false });
+  NProgress.start();
 });
 
 // HTML5 Geolocation : Find Current Location
@@ -143,6 +145,7 @@ function getData() {
     },
     success: function (msg) {
       $("#instagram ul").html(msg);
+	  NProgress.set(0.4);
     }
   });
 
@@ -154,21 +157,16 @@ function getData() {
       longitude: current_long
     },
     success: function (msg) {
-
       data = JSON.parse(msg);
-
       var return_data = "<ul>";
-
       var businesses = data["businesses"];
-
       for (var i in businesses) {
         var business = businesses[i];
         return_data += "<li>" + "<div class='listings'>" + "<span class='text'>" + '<a target="_blank" href="' + business["url"] + '">' + business["name"] + '</a>' + "</span>" + "<span class='rating'>" + " Rating: " + '<img src="' + business["rating_img_url"] + '"' + "</span>" + "</div>" + "</li>";
       }
-
       return_data += "</ul>"
-
       $("#restaurants").html(return_data);
+	  NProgress.done();
     }
   });
 

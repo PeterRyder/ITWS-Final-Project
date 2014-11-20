@@ -38,19 +38,6 @@ body {
 	padding: 0.25em;
 }
 
-
-.text {
-  float: left;
-}
-
-.rating {
-  float: right;
-}
-
-.listings {
-  clear: both;
-}
-
 div#mastHead {
   margin: 1em 0;
   padding: 4em 0;
@@ -82,9 +69,21 @@ div#content div.block {
   padding: 0.75em;
 }
 
-div#content div.block#instagram ul li, div#content div.block#flickr ul li {
+div#content div.block#instagram ul li {
   display: inline;
 }
+
+div#content div#yelp .text {
+  float: left;
+}
+div#content div#yelp .rating {
+  float: right;
+}
+div#content div#yelp .listings {
+  clear: both;
+}
+
+
 
 footer {
 	padding: 0 1em;
