@@ -3,7 +3,26 @@ $(document).ready(function () {
   getLocation();
   getmap();
   NProgress.configure({ showSpinner: false });
+
+$("#customval").focus();
+
+$("#submit").click(function(event) {
+	event.preventDefault();
+	enableCustomLocation();	
 });
+$("#customval").keypress(function(event) {
+	if(event.which == 13) {
+		event.preventDefault();
+		enableCustomLocation();
+	}
+});
+$("a#customlocation").click(function() {
+	disableCustomLocation();
+});
+
+});
+
+
 // HTML5 Geolocation : Find Current Location
 var current_lat;
 var current_long;
@@ -19,7 +38,7 @@ var check_initial = false;
 var update_delay = 10000; // milliseconds
 
 var custom = false;
-var zipcode = "94110";
+var zipcode = "12180";
 var the_zipcoder;
 
 function getLocation() {
@@ -67,16 +86,16 @@ function currentPosition(position) {
   if (!check_initial) {
     codeLatLng();
     check_initial = true;
-    getmap();
 	getZipCode();
+    getmap();
     getData();
     NProgress.start();
   }
   if ((diff > update_delay) && (custom == false)) {
     codeLatLng();
     check_time = now;
-    getmap();
 	getZipCode();
+    getmap();
     getData();
   }
   amount_checks += 1;
@@ -86,7 +105,6 @@ function currentPosition(position) {
 // Google Maps API : Show Current Location & Get Info
 
 var infowindow = new google.maps.InfoWindow();
-var current_zip;
 
 function initialize() {
   geocoder = new google.maps.Geocoder();
@@ -180,7 +198,7 @@ function getData() {
   $.ajax ({
     url: 'get_trulia.php',
     type: 'POST',
-    data: {zipcode : current_zip},
+    data: {zipcode : zipcode},
     success: function(msg) {
       result = JSON.parse(msg);
 
@@ -208,19 +226,6 @@ function getData() {
     },
     beforeSend: function(){}
   });
-  
-
-  $.ajax({
-	url: 'update_cache.php',
-	type: 'POST',
-	data: {
-		latitude: current_lat,
-		longitude: current_long,
-		custom: custom
-	},
-	success: function(msg) {}
-  });
->>>>>>> FETCH_HEAD
 }
 
 function getZipCode() {
@@ -252,12 +257,16 @@ function findZip(results) {
 	return 0;
 }
 
-function enableCustomLocation(input_zipcode) {
+function enableCustomLocation() {
 	if (custom != true) {
 		custom = true;
 	}
-	zipcode = input_zipcode;
+	// Turn off glowing
+	$("#customlocationform a i ").addClass("noglow");
 	
+	input_zipcode = $("#customval").val();
+	zipcode = input_zipcode;
+	NProgress.start();
   $.ajax({
 	url: 'latlongfromzip.php',
 	type: 'POST',
@@ -269,8 +278,10 @@ function enableCustomLocation(input_zipcode) {
 		current_lat = msg.latitude;
 		current_long = msg.longitude;
 		codeLatLng();
+		getZipCode();
 		getmap();
 		getData();
+		NProgress.done();
 	}
   });
 	
@@ -280,10 +291,17 @@ function disableCustomLocation() {
 	if (custom == true) {
 		custom = false;
 	}
+	// Turn glowing back on 
+	$("#customlocationform a i ").removeClass("noglow");
+	
 	// Reload everything
-	initialize();
+	NProgress.start();
     getLocation();
 	codeLatLng();
+	getZipCode();
 	getmap();
 	getData();
+	NProgress.done();
 }
+
+

@@ -36,6 +36,7 @@ li, p {
 	padding: 0 2em;
 }
 #mainHeader h1 {
+	font-size: 2.25em;
 	color: #FFF;
 }
 #mainHeader div#search {
@@ -51,7 +52,7 @@ li, p {
 	background-color: #00B4FF;
 	color: #FFF;
 	border: 0;
-	padding: 0.4em;
+	padding: 0.3em;
 }
 a#customlocation {
 	text-decoration: none;
@@ -69,8 +70,16 @@ a#customlocation i {
   -webkit-animation-duration: 2s;
   -webkit-animation-iteration-count: infinite;
 }
+a#customlocation i.noglow {
+	-webkit-animation-name: none;
+	-webkit-animation-duration: 0s;
+	-webkit-animation-iteration-count: 0;
+	background-color: #BBB;
+}
+
 a#customlocation:hover i {
 	color: #00B4FF;
+	background-color: #FFF;
 }
 
 @-webkit-keyframes bluePulse {
