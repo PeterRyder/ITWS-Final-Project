@@ -35,7 +35,7 @@ var latlng;
 var geocoder;
 var check_time = new Date();
 var check_initial = false;
-var update_delay = 10000; // milliseconds
+var update_delay = 20000; // milliseconds
 
 var custom = false;
 var zipcode = "12180";
