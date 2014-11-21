@@ -18,6 +18,10 @@ li, p {
   position: normal;
 }
 
+#status {
+	display: none;
+}
+
 @media (min-width: 800px) {
   #mainHeaderWrap.stick {
 	position: fixed;
