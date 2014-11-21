@@ -126,6 +126,17 @@ function codeLatLng() {
         $('#name').html(results[1].formatted_address);
         city = findCity(results[0].address_components);
         state = findState(results[0].address_components);
+		  $.ajax({
+		    url: 'get_census.php',
+		    type: 'POST',
+		    data: {
+		      city: findCity(results[0].address_components),
+			  state: findState(results[0].address_components)
+		    },
+		    success: function (msg) {
+		      $("#population").html(msg);
+		    }
+		  });
         $("#citystate").html(city + ", " + state);
       } else {
         $('#msg').html('Google Maps: No results found for current location.');
@@ -173,7 +184,7 @@ function getData() {
   	  NProgress.inc(0.3);
     }
   });
-  
+
   $.ajax({
     url: 'get_yelp.php',
     type: 'POST',
