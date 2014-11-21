@@ -300,10 +300,10 @@ function enableCustomLocation() {
 		getZipCode();
 		getmap();
 		getData();
-		NProgress.done();
 	}
   });
 	
+	NProgress.done();
 }
 
 function disableCustomLocation() {
@@ -312,9 +312,11 @@ function disableCustomLocation() {
 	}
 	// Turn glowing back on 
 	$("#customlocationform a i").removeClass("noglow");
-	
+	NProgress.start();
 	// Reload everything
 	location.reload();
+	
+	NProgress.done();
 }
 
 

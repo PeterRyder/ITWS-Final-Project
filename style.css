@@ -12,10 +12,18 @@ h1, h2, h3 {
 li, p {
 	font-family: 'Muli', sans-serif !important;
 }
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
 
 
 #mainHeaderWrap.stick {
   position: normal;
+}
+#content.stick {
+	margin: 0;
 }
 
 #status {
@@ -29,6 +37,9 @@ li, p {
 	right: 0;
 	width: 100%;
   }
+  #content.stick {
+	margin-top: 80px;
+}
 }
 
 #mainHeaderWrap {
@@ -44,8 +55,9 @@ li, p {
 	color: #FFF;
 }
 #mainHeader div#search {
-	margin: 1.5em 0 0;
+	margin: 1.75em 0 0;
 	float: right;
+	font-size: 1.1em;
 }
 #mainHeader div#search input {
 	outline: 0;
@@ -63,9 +75,12 @@ li, p {
 	#submit {
 		margin: 1em 0 0 0 !important;
 	}
+	div#content h1 span#citystate {
+		font-size: 1em !important;
+	}
 	
 }
-#customlocationform input[type="text"] {
+#customlocationform input[type=number] {
 	padding: 0.35em;
 }
 #submit {

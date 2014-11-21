@@ -3,10 +3,10 @@ function sticky_relocate() {
     var div_top = $('#sticky-anchor').offset().top;
     if (window_top > div_top) {
       $('#mainHeaderWrap').addClass('stick');
-      $('#content').css('margin-top', '80px');
+      $('#content').addClass('stick');
     } else {
       $('#mainHeaderWrap').removeClass('stick');
-      $('#content').css('margin-top', '0px');
+      $('#content').removeClass('stick');
     }
 }
 
