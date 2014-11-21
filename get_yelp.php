@@ -5,7 +5,7 @@ $longitude = $_POST['longitude'];
 
 $ywsid = "bDUYxwT3fwZ4bpL0tThuXg";
 
-$result = fetchData("http://api.yelp.com/business_review_search?category=restaurants&lat={$latitude}&long={$longitude}&radius=25&num_biz_requested=100&ywsid={$ywsid}");
+$result = fetchData("http://api.yelp.com/business_review_search?category=restaurants&lat={$latitude}&long={$longitude}&radius=5&num_biz_requested=100&ywsid={$ywsid}");
 
 function fetchData($url){
      $ch = curl_init();
