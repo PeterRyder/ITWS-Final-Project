@@ -202,7 +202,6 @@ function getData() {
     data: {zipcode : zipcode},
     success: function(msg) {
       result = JSON.parse(msg);
-
       //console.log(result);
       
       var return_data = "<ul>";
@@ -213,10 +212,16 @@ function getData() {
         var avg = avg_input.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
 
         if (j == 1) {
-          return_data += "<li class='cf'>" + "<div class='listings'> Avg Listing Price " + j + " bedroom: $" + avg + "</div>" + "</li>";
+          	if (avg < 1) {
+				return_data += "<li class='cf'>" + "<div class='listings'>" + j + " bedroom: No data available. </div>" + "</li>";
+			}
+			else return_data += "<li class='cf'>" + "<div class='listings'>" + j + " bedroom: $" + avg + "</div>" + "</li>";
         }
         else {
-          return_data += "<li class='cf'>" + "<div class='listings'> Avg Listing Price " + j + " bedrooms: $" + avg + "</div>" + "</li>";
+			if (avg < 1) {
+				return_data += "<li class='cf'>" + "<div class='listings'>" + j + " bedrooms: No data available. </div>" + "</li>";
+			}
+			else return_data += "<li class='cf'>" + "<div class='listings'>" + j + " bedrooms: $" + avg + "</div>" + "</li>";
         }
         j += 1;
       }
@@ -224,8 +229,7 @@ function getData() {
       return_data += "</ul>";
       
       $('#truliaData').html(return_data);
-    },
-    beforeSend: function(){}
+    }
   });
 }
 
@@ -247,29 +251,6 @@ function getZipCode() {
 	      $('#msg').html('Google Maps Geocoder failed due to: ' + status);
 	    }
 	  });
-}
-
-function getNewZipCode(latitude, longitude) {
-	var lat = parseFloat(latitude);
-	var lng = parseFloat(longitude);
-	var newzipcode;
-  	  newgeocoder = new google.maps.Geocoder();
-	  newzipcoder = new google.maps.LatLng(lat, lng);
-	  newgeocoder.geocode({
-	    'latLng': newzipcoder
-	  }, function (results, status) {
-	    if (status == google.maps.GeocoderStatus.OK) {
-	      if (results[1]) {
-			newzipcode = findZip(results[0].address_components);
-	      } else {
-	        $('#msg').html('Google Maps: No results found for current location.');
-	      }
-	    } else {
-	      $('#msg').html('Google Maps Geocoder failed due to: ' + status);
-	    }
-	  });
-
-	return newzipcode;
 }
 
 function findZip(results) {
@@ -322,15 +303,7 @@ function disableCustomLocation() {
 	$("#customlocationform a i").removeClass("noglow");
 	
 	// Reload everything
-	NProgress.start();
-	initialize();
-	getLocation();
-	zipcode = getNewZipCode(current_lat, current_long);
-	getZipCode();
-	codeLatLng();
-	getmap();
-	getData();
-	console.log(zipcode);
+	location.reload();
 }
 
 
