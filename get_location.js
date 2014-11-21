@@ -135,7 +135,10 @@ function codeLatLng() {
 		    },
 		    success: function (msg) {
 		      $("ul#population").html(msg);
-		    }
+		    },
+			beforeSend: function() {
+				$("ul#population").html("<li>Loading Census data...</li>");
+			}
 		  });
         $("#citystate").html(city + ", " + state);
       } else {
@@ -182,7 +185,10 @@ function getData() {
     success: function (msg) {
       $("#instagram ul").html(msg);
   	  NProgress.inc(0.3);
-    }
+    },
+	beforeSend: function() {
+		$("#instagram ul").html("<p class='pure-u-1'>Loading Instagram...</p>");
+	}
   });
 
   $.ajax({
@@ -204,7 +210,10 @@ function getData() {
       $("#restaurants").html(return_data);
   	  NProgress.inc(0.3);
   	  NProgress.done();
-    }
+    },
+	beforeSend: function() {
+		$("#restaurants").html("<p>Loading Yelp data...</p>");
+	}
   });
 
   $.ajax ({
@@ -240,7 +249,10 @@ function getData() {
       return_data += "</ul>";
       
       $('#truliaData').html(return_data);
-    }
+    },
+	beforeSend: function() {
+		$("#truliaData").html("<p>Loading Trulia housing information...</p>");
+	}
   });
 }
 
