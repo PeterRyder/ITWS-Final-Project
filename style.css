@@ -145,6 +145,7 @@ div#content ul {
 }
 div#content ul li {
   list-style-type: none;
+  padding: 0.25em 0;
 }
 
 div#content div.blockWrap {

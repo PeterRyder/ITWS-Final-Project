@@ -64,8 +64,27 @@ if (floatval($ethIndex) > 0) {
 
 
 
+// HOUSING UNITS
 
+$houseData = fetchData("http://api.usatoday.com/open/census/hou?keypat={$state}&sumlevid=4,6&api_key=uh4gvjvrwfg3342f395kwbd9");
 
+$houseData = json_decode($houseData);
+$houseUnits = "0";
+
+foreach ($houseData->response as $place) {
+	if (($place->PlaceName) == $city) {
+		$houseUnits = $place->HousingUnits;
+	}
+}
+
+if (intval($houseUnits) > 0) {
+	$houseUnits_number = intval($houseUnits);
+	$houseUnits_string = number_format($houseUnits_number);
+	?>	
+	<li>Housing Units: <span><?php echo $houseUnits_string; ?></span></li>
+<?php
+$printed++;
+}
 
 
 if ($printed == 0) echo "<li>No data available.</li>";
