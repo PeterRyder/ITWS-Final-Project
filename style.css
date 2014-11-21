@@ -46,18 +46,33 @@ li, p {
 #mainHeader div#search {
 	margin: 1.5em 0 0;
 	float: right;
-	font-size: 18px;
 }
 #mainHeader div#search input {
 	outline: 0;
-	padding: 0.25em;
+	border: 0;
 }
 #mainHeader div#search input[type="submit"] {
 	background-color: #00B4FF;
 	color: #FFF;
 	border: 0;
-	padding: 0.4em;
 }
+@media only screen and (max-width: 35.5em) {
+	#customlocationwrap {
+		width: 55px;
+	}
+	#submit {
+		margin: 1em 0 0 0 !important;
+	}
+	
+}
+#customlocationform input[type="text"] {
+	padding: 0.35em;
+}
+#submit {
+	padding: 0.35em;
+	margin: 0 1em;
+}
+
 a#customlocation {
 	text-decoration: none;
 }
@@ -103,6 +118,10 @@ div#mastHead h1 {
   text-align: center;
 }
 
+div#content h1 span#citystate {
+  font-size: 1.5em;
+  text-shadow: 3px 3px 3px #333;
+}
 div#content h2 {
 	color: #00B4FF;
 }
