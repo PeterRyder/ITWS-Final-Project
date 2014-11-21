@@ -135,6 +135,7 @@ function codeLatLng() {
 		    },
 		    success: function (msg) {
 		      $("ul#population").html(msg);
+		  	  NProgress.done();
 		    },
 			beforeSend: function() {
 				$("ul#population").html("<li>Loading Census data...</li>");
@@ -184,7 +185,7 @@ function getData() {
     },
     success: function (msg) {
       $("#instagram ul").html(msg);
-  	  NProgress.inc(0.3);
+  	  NProgress.inc(0.15);
     },
 	beforeSend: function() {
 		$("#instagram ul").html("<p class='pure-u-1'>Loading Instagram...</p>");
@@ -208,8 +209,7 @@ function getData() {
       }
       return_data += "</ul>";
       $("#restaurants").html(return_data);
-  	  NProgress.inc(0.3);
-  	  NProgress.done();
+  	  NProgress.inc(0.25);
     },
 	beforeSend: function() {
 		$("#restaurants").html("<p>Loading Yelp data...</p>");
@@ -249,6 +249,7 @@ function getData() {
       return_data += "</ul>";
       
       $('#truliaData').html(return_data);
+	NProgress.inc(0.15);
     },
 	beforeSend: function() {
 		$("#truliaData").html("<p>Loading Trulia housing information...</p>");
