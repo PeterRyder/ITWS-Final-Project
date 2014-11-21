@@ -134,7 +134,7 @@ function codeLatLng() {
 			  state: findState(results[0].address_components)
 		    },
 		    success: function (msg) {
-		      $("#population").html(msg);
+		      $("ul#population").html(msg);
 		    }
 		  });
         $("#citystate").html(city + ", " + state);
