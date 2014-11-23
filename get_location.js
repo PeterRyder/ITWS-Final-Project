@@ -188,7 +188,7 @@ function getData() {
   	  NProgress.inc(0.15);
     },
 	beforeSend: function() {
-		$("#instagram ul").html("<p class='pure-u-1'>Loading Instagram...</p>");
+		// $("#instagram ul").html("<p class='pure-u-1'>Loading Instagram...</p>");
 	}
   });
 
